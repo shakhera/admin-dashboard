@@ -24,8 +24,8 @@ import {
 import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(true); // For medium devices
-  const [isVisible, setIsVisible] = useState(false); // For small devices
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 
@@ -55,7 +55,7 @@ const Sidebar = () => {
     <>
       {/* FAB Icon for Small Devices */}
       <button
-        className="fixed top-4 left-4 z-30 p-2 bg-primary text-black rounded-full md:hidden shadow-lg duration-500"
+        className="fixed top-2 left-2 z-30 p-2 bg-primary text-black rounded-full md:hidden shadow-lg duration-500"
         onClick={toggleVisibility}
       >
         {isVisible ? <FaTimes /> : <FaBars />}
@@ -63,9 +63,9 @@ const Sidebar = () => {
 
       {/* Sidebar - Hidden on Small, Toggle-able on Medium */}
       <div
-        className={`fixed h-full z-20 transition-all duration-300 shadow-lg  text-gray-700
+        className={` h-full z-20 transition-all duration-300 shadow-lg bg-white text-gray-700
             ${isVisible ? "left-0" : "-left-64"}   /* For Small Devices */
-            md:${isCollapsed ? "w-20" : "w-64"} md:left-0 
+            md:${isCollapsed ? "w-20" : "64"} md:left-0 
             lg:w-64 lg:left-0 }
         `}
       >
@@ -99,6 +99,13 @@ const Sidebar = () => {
                 }
                 onClick={() => setIsVisible(false)}
               >
+                {/* <span
+                  className={`ml-4 ${
+                    isCollapsed ? "hidden" : "block"
+                  } lg:block`}
+                >
+                  {item.icon}
+                </span> */}
                 <span className="text-lg">{item.icon}</span>
                 <span
                   className={`ml-4 ${
@@ -116,7 +123,7 @@ const Sidebar = () => {
       {/* Overlay for Small Devices */}
       {isVisible && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          className="fixed inset-0 bg-gray-600 bg-opacity-50 z-30 md:hidden"
           onClick={toggleVisibility}
         ></div>
       )}
