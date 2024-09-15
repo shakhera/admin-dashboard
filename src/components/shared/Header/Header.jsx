@@ -1,8 +1,15 @@
-import { FaBell, FaSearch } from "react-icons/fa";
+import { useState } from "react";
+import { FaBell, FaChevronDown, FaSearch } from "react-icons/fa";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="bg-white flex justify-between items-center p-4 shadow-md">
+    <div className="bg-white flex justify-between items-center p-4 shadow-md ">
       {/* Search Bar */}
       <div className="flex items-center space-x-2">
         <input
@@ -25,15 +32,52 @@ const Header = () => {
           <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500"></span>
         </button>
 
-        <div className="flex items-center">
-          <img
-            width={500}
-            height={500}
-            className="size-10 rounded-full bg-slate-500 object-cover"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop"
-            alt="avatar navigate ui"
-          />
-          <span className="ml-2 font-medium text-sm">Bradly Robin</span>
+        {/* Profile Dropdown */}
+        <div className="relative">
+          <div
+            className="flex items-center cursor-pointer"
+            onClick={toggleDropdown}
+          >
+            <img
+              width={40}
+              height={40}
+              className="rounded-full bg-slate-500 object-cover"
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop"
+              alt="avatar profile"
+            />
+            <span className="ml-2 font-medium text-sm">Bradly Robin</span>
+            <span className="ml-1">
+              <FaChevronDown
+                className={`text-gray-500 duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </span>
+          </div>
+
+          {/* Dropdown Menu */}
+          {isOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-10">
+              <a
+                href="#profile"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                Profile
+              </a>
+              <a
+                href="#settings"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                Settings
+              </a>
+              <a
+                href="#logout"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-400"
+              >
+                Logout
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>
