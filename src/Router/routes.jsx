@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import AdminDashboard from "../Layout/AdminDashboard";
-import Dashboard from "../components/AdminDashboard/Dashboard/Dashboard";
-import Purchase from "../components/AdminDashboard/Purchase/Purchase";
-import Customers from "../components/AdminDashboard/Customers/Customers";
-import Inventory from "../components/AdminDashboard/Inventory/Inventory";
-import Supplier from "../components/AdminDashboard/Supplier/Supplier";
+import Dashboard from "../pages/AdminDashboard/Dashboard/Dashboard";
+import Purchase from "../pages/AdminDashboard/Purchase/Purchase";
+import Supplier from "../pages/AdminDashboard/Supplier/Supplier";
+import Inventory from "../pages/AdminDashboard/Inventory/Inventory";
+import Customers from "../pages/AdminDashboard/Customers/Customers";
 
 const routes = createBrowserRouter([
   {

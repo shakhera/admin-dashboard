@@ -10,12 +10,14 @@ const Header = () => {
 
   return (
     <div className="bg-white flex justify-between items-center p-4 shadow-md ">
+      {/* <h2 className="ml-3 font-Poppins">i M a student</h2>
+      <h2 className="ml-3 ">i M a student</h2> */}
       {/* Search Bar */}
-      <div className="flex items-center space-x-2">
+      <div className="w flex items-center space-x-2 ml-6">
         <input
           type="text"
           placeholder="Search..."
-          className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary placeholder-gray-400"
+          className="pl-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary w-40 md:w-56 lg:w-64 placeholder-gray-400"
           aria-label="Search"
         />
         <FaSearch className="text-gray-400" />

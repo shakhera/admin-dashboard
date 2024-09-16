@@ -15,7 +15,6 @@ export default {
         accentGreen: "#28A745", // Green (Success Accent)
         accentYellow: "#FFC107", // Yellow (Warning Accent)
         accentRed: "#DC3545", // Red (Danger Accent)
-
         // Additional Colors
         brightBlue: "#4A90E2", // Bright Contemporary Blue
         warmOrange: "#F5A623", // Warm Accent Orange

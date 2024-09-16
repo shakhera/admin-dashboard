@@ -55,7 +55,7 @@ const Sidebar = () => {
     <>
       {/* FAB Icon for Small Devices */}
       <button
-        className="fixed top-5 left-0 z-40 p-2 bg-primary text-black rounded-full md:hidden shadow-lg transition-transform duration-500"
+        className="fixed top-5 left-0 z-40 p-2  text-black rounded-full md:hidden shadow-lg transition-transform duration-500"
         onClick={() => setIsVisible(!isVisible)}
       >
         {isVisible ? <FaTimes /> : <FaBars />}
@@ -64,12 +64,12 @@ const Sidebar = () => {
       {/* Sidebar - Hidden on Small, Toggle-able on Medium */}
       <div
         className={` h-full z-20 transition-transform duration-500 shadow-lg bg-white text-gray-700
-            ${isVisible ? "left-0" : "-left-64"}   
-            md:${isCollapsed ? "w-20" : "w-64"} md:left-0 
+            ${isVisible ? "left-0 " : "-left-64"} 
+            ${isCollapsed ? "w-0 md:w-20" : "w-64"} md:left-0 
             lg:w-64 lg:left-0 }
         `}
       >
-        <div className="p-4 flex justify-between items-center border-b border-gray-700">
+        <div className="p-4 flex justify-between items-center md:border-b border-gray-700">
           <h2
             className={`${
               isCollapsed ? "hidden" : "block"
@@ -93,16 +93,16 @@ const Sidebar = () => {
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  `flex items-center p-2 hover:bg-gray-300 cursor-pointer overflow-y-hidden ${
-                    isActive ? "bg-gray-300 text-black" : ""
+                  `flex items-center p-2 hover:bg-gray-200 cursor-pointer overflow-y-hidden ${
+                    isActive ? "bg-gray-100 text-black" : ""
                   }`
                 }
                 onClick={() => setIsVisible(false)}
               >
                 <span
-                  className={`ml-4 ${
-                    isCollapsed ? "hidden md:block" : "block"
-                  } lg:block`}
+                // className={`md:ml-4 ${
+                //   isCollapsed ? "hidden md:block" : "block"
+                // } lg:block`}
                 >
                   {item.icon}
                 </span>

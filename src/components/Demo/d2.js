@@ -17,7 +17,7 @@ export default [
         sourceType: "module",
       },
     },
-    settings: { react: { version: "detect" } }, // Auto-detect React version
+    settings: { react: { version: "18.3" } },
     plugins: {
       react,
       "react-hooks": reactHooks,
@@ -29,8 +29,6 @@ export default [
       ...react.configs["jsx-runtime"].rules,
       ...reactHooks.configs.recommended.rules,
       "react/jsx-no-target-blank": "off",
-      "react/react-in-jsx-scope": "off", // Disable the rule requiring React import
-      "react/prop-types": "off", // Disable PropTypes if not using
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Header from "../components/shared/Header/Header";
-import Sidebar from "../components/shared/Sidebar/Sidebar";
-import Footer from "../components/shared/Footer/Footer";
+import Sidebar from "../pages/shared/Sidebar/Sidebar";
+import Header from "../pages/shared/Header/Header";
+import Footer from "../pages/shared/Footer/Footer";
 
 const AdminDashboard = () => {
   return (
