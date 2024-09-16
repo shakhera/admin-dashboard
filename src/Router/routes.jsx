@@ -5,10 +5,12 @@ import Purchase from "../pages/AdminDashboard/Purchase/Purchase";
 import Supplier from "../pages/AdminDashboard/Supplier/Supplier";
 import Inventory from "../pages/AdminDashboard/Inventory/Inventory";
 import Customers from "../pages/AdminDashboard/Customers/Customers";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const routes = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage />,
     element: <AdminDashboard />,
     children: [
       {
