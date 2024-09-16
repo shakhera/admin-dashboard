@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
+        logo: ['"Jacques Francois Shadow"', "serif"],
       },
+
       colors: {
         // Standard Colors
         primary: "#007BFF", // Blue (Bootstrap Primary)

@@ -27,10 +27,6 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
 
-  // const toggleSidebar = () => setIsCollapsed(!isCollapsed);
-
-  // const toggleVisibility = () => setIsVisible(!isVisible);
-
   const menuItems = [
     { name: "Dashboard", path: "/", icon: <FaTachometerAlt /> },
     { name: "Customer", path: "/customers", icon: <FaUsers /> },
@@ -70,13 +66,15 @@ const Sidebar = () => {
         `}
       >
         <div className="p-4 flex justify-between items-center md:border-b border-gray-700">
-          <h2
+          <div
             className={`${
               isCollapsed ? "hidden" : "block"
-            } lg:block  font-semibold text-lg`}
+            } lg:block font-poppins text-lg md:text-xl text-gray-900`}
           >
-            PHARMA
-          </h2>
+            <h2 className="border-b-2 border-gray-700 pb-1">Pharma</h2>
+            {/* Second Part of the Logo */}
+            <h2>Solutions</h2>
+          </div>
           <button
             className=" hidden md:block lg:hidden text-xl p-2 text-gray-800 duration-500"
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -99,14 +97,7 @@ const Sidebar = () => {
                 }
                 onClick={() => setIsVisible(false)}
               >
-                <span
-                // className={`md:ml-4 ${
-                //   isCollapsed ? "hidden md:block" : "block"
-                // } lg:block`}
-                >
-                  {item.icon}
-                </span>
-                {/* <span className="text-lg">{item.icon}</span> */}
+                <span className="text-lg">{item.icon}</span>
                 <span
                   className={`ml-4 ${
                     isCollapsed ? "hidden" : "block"
@@ -121,17 +112,23 @@ const Sidebar = () => {
       </div>
 
       {/* Overlay for Small Devices */}
-      {/* {isVisible && (
-        <div
-          className="fixed inset-0 bg-gray-600 bg-opacity-50 z-30 md:hidden"
-          onClick={() => setIsVisible(!isVisible)}
-        ></div>
-      )} */}
+
       {isVisible && (
         <div
           className="fixed  inset-y-0 left-0 w-56   bg-white z-30 md:hidden"
           onClick={() => setIsVisible(!isVisible)}
         >
+          {/* Logo Section */}
+          <div className="flex flex-col items-center py-4 border-b-2 border-gray-300">
+            <div className="font-logo text-lg text-gray-900">
+              <h2 className="border-b-2 front-logo border-gray-700 pb-1">
+                Pharma
+              </h2>
+              <h2>Solutions</h2>
+            </div>
+          </div>
+
+          {/* Navigation Menu */}
           <ul className="flex flex-col mt-4  py-10 space-y-2 overflow-y-auto h-full">
             {menuItems.map((item, index) => (
               <li key={index}>
