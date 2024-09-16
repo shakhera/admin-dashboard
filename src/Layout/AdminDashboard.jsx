@@ -5,16 +5,18 @@ import Footer from "../pages/shared/Footer/Footer";
 
 const AdminDashboard = () => {
   return (
-    <div className="flex h-screen w-screen overflow-hidden">
-      <Sidebar />
-      <div className="flex flex-1 flex-col ">
-        <Header />
-        <main className="flex-1 p-6 overflow-y-auto">
-          <Outlet />
-        </main>
-        <Footer />
+    <>
+      <div className="flex h-screen w-screen">
+        <Sidebar />
+        <div className="flex flex-1 flex-col overflow-hidden md:ml-20 lg:ml-64">
+          <Header />
+          <main className="flex-1 p-6 overflow-y-auto overflow-x-auto ">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

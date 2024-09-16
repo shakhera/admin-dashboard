@@ -51,9 +51,8 @@ const Customers = () => {
     <div className="p-4">
       {customers?.length > 0 ? (
         <div className="bg-gray-300 overflow-x-auto shadow-md rounded-lg">
-          {/* Table for larger screens */}
           <div className="overflow-x-auto">
-            <table className="hidden md:table min-w-full bg-white ">
+            <table className=" min-w-full bg-white ">
               <thead>
                 <tr>
                   <th className="py-2 px-4 border-b border-r">Id</th>
@@ -119,45 +118,6 @@ const Customers = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-
-          {/* Card layout for mobile screens */}
-          <div className="md:hidden">
-            {customers?.map((customer, index) => (
-              <div
-                key={customer.id}
-                className={`p-4 mb-2 rounded-lg shadow-md ${
-                  index % 2 === 0 ? "bg-green-50" : "bg-white"
-                }`}
-              >
-                <div className="flex justify-between items-center">
-                  <h3 className="font-bold">{customer.name}</h3>
-                  <button
-                    onClick={() => handleDelete(customer.id)}
-                    className="text-red-500 hover:text-red-700"
-                  >
-                    <FaTrash />
-                  </button>
-                </div>
-                <p className="text-sm text-gray-600">
-                  Username: {customer.username}
-                </p>
-                <p className="text-sm text-gray-600">Email: {customer.email}</p>
-                <p className="text-sm text-gray-600">Phone: {customer.phone}</p>
-                <p className="text-sm text-gray-600">
-                  Address: {customer.address.street}
-                </p>
-                <p className="text-sm text-gray-600">
-                  Company: {customer.company.name}
-                </p>
-                <a
-                  href={`https://${customer.website}`}
-                  className="text-blue-500 hover:underline text-sm"
-                >
-                  {customer.website}
-                </a>
-              </div>
-            ))}
           </div>
         </div>
       ) : (

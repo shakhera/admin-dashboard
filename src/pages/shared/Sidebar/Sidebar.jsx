@@ -51,7 +51,7 @@ const Sidebar = () => {
     <>
       {/* FAB Icon for Small Devices */}
       <button
-        className="fixed top-5 left-0 z-40 p-2  text-black rounded-full md:hidden shadow-lg transition-transform duration-500"
+        className="fixed top-5 left-0 z-40 p-2 text-black rounded-full md:hidden shadow-lg transition-transform duration-500"
         onClick={() => setIsVisible(!isVisible)}
       >
         {isVisible ? <FaTimes /> : <FaBars />}
@@ -59,17 +59,16 @@ const Sidebar = () => {
 
       {/* Sidebar - Hidden on Small, Toggle-able on Medium */}
       <div
-        className={` h-full z-20 transition-transform duration-500 shadow-lg bg-white text-gray-700
-            ${isVisible ? "left-0 " : "-left-64"} 
-            ${isCollapsed ? "w-0 md:w-20" : "w-64"} md:left-0 
-            lg:w-64 lg:left-0 }
-        `}
+        className={`fixed top-0 left-0 h-screen z-20 transition-transform duration-500 shadow-lg bg-white text-gray-700
+          ${isVisible ? "translate-x-0" : "-translate-x-full"} 
+          ${isCollapsed ? "w-0 md:w-20" : "w-64"} md:translate-x-0 
+          lg:w-64 lg:translate-x-0`}
       >
         <div className="p-4 flex justify-between items-center md:border-b border-gray-700">
           <div
             className={`${
               isCollapsed ? "hidden" : "block"
-            } lg:block font-poppins text-lg md:text-xl text-gray-900`}
+            } lg:block font-logo text-lg md:text-xl text-gray-900`}
           >
             <h2 className="border-b-2 border-gray-700 pb-1">Pharma</h2>
             {/* Second Part of the Logo */}
@@ -84,14 +83,13 @@ const Sidebar = () => {
         </div>
 
         {/* Navigation Links */}
-
         <ul className="flex flex-col mt-4 pb-10 space-y-2 overflow-y-auto h-full">
           {menuItems.map((item, index) => (
             <li key={index}>
               <NavLink
                 to={item.path}
                 className={({ isActive }) =>
-                  `flex items-center p-2 hover:bg-gray-200 cursor-pointer overflow-y-hidden ${
+                  `flex items-center p-2 hover:bg-gray-200 cursor-pointer ${
                     isActive ? "bg-gray-100 text-black" : ""
                   }`
                 }
@@ -112,10 +110,9 @@ const Sidebar = () => {
       </div>
 
       {/* Overlay for Small Devices */}
-
       {isVisible && (
         <div
-          className="fixed  inset-y-0 left-0 w-56   bg-white z-30 md:hidden"
+          className="fixed inset-y-0 left-0 w-56 bg-white z-30 md:hidden"
           onClick={() => setIsVisible(!isVisible)}
         >
           {/* Logo Section */}
@@ -129,13 +126,13 @@ const Sidebar = () => {
           </div>
 
           {/* Navigation Menu */}
-          <ul className="flex flex-col mt-4  py-10 space-y-2 overflow-y-auto h-full">
+          <ul className="flex flex-col mt-4 py-10 space-y-2 overflow-y-auto h-full">
             {menuItems.map((item, index) => (
               <li key={index}>
                 <NavLink
                   to={item.path}
                   className={({ isActive }) =>
-                    `flex items-center p-2 hover:bg-gray-300 cursor-pointer overflow-y-hidden space-x-3 ${
+                    `flex items-center p-2 hover:bg-gray-300 cursor-pointer ${
                       isActive ? "bg-gray-200 text-black" : ""
                     }`
                   }
