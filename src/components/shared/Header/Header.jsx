@@ -45,7 +45,9 @@ const Header = () => {
               src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2080&auto=format&fit=crop"
               alt="avatar profile"
             />
-            <span className="ml-2 font-medium text-sm">Bradly Robin</span>
+            <span className="hidden md:block ml-2 font-medium text-sm">
+              Bradly Robin
+            </span>
             <span className="ml-1">
               <FaChevronDown
                 className={`text-gray-500 duration-300 ${

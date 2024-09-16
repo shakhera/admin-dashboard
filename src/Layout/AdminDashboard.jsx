@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/shared/Header/Header";
 import Sidebar from "../components/shared/Sidebar/Sidebar";
+import Footer from "../components/shared/Footer/Footer";
 
 const AdminDashboard = () => {
   return (
@@ -11,6 +12,7 @@ const AdminDashboard = () => {
         <main className="flex-1 p-6 overflow-y-auto">
           <Outlet />
         </main>
+        <Footer />
       </div>
     </div>
   );

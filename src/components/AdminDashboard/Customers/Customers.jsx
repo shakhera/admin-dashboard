@@ -1,14 +1,52 @@
 import { FaTrash } from "react-icons/fa";
-import { useGetCustometsQuery } from "../../../redux/features/api/baseApi";
+import {
+  useDeleteCustomerMutation,
+  useGetCustometsQuery,
+} from "../../../redux/features/api/baseApi";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Customers = () => {
+  const [deleting, setDeleting] = useState(false);
+
   const { data: customers, refetch, isLoading } = useGetCustometsQuery();
   console.log(customers);
+  const [deleteCustomer] = useDeleteCustomerMutation();
 
-  const handleDelete = (id) => {
-    // Your delete logic here
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        setDeleting(true);
+        await deleteCustomer(id);
+        refetch();
+        Swal.fire("Deleted!", "The customer has been deleted.", "success");
+      } catch (error) {
+        console.error("Failed to delete the customer", error);
+        Swal.fire(
+          "Error!",
+          "There was a problem deleting the customer.",
+          "error"
+        );
+      } finally {
+        setDeleting(false);
+      }
+    }
   };
 
+  if (isLoading) {
+    return <p>Loading.......</p>;
+  }
   return (
     <div className="p-4">
       <div className="bg-gray-300 overflow-x-auto shadow-md rounded-lg">
@@ -62,9 +100,19 @@ const Customers = () => {
                     </a>
                   </td>
                   <td className="py-2 px-4 border-b">
-                    <button
+                    {/* <button
                       onClick={() => handleDelete(customer.id)}
                       className="text-red-500 hover:text-red-700"
+                    >
+                      <FaTrash />
+                    </button> */}
+
+                    <button
+                      onClick={() => handleDelete(customer.id)}
+                      className={`text-red-500 hover:text-red-700 ${
+                        deleting ? "opacity-50" : ""
+                      }`}
+                      disabled={deleting}
                     >
                       <FaTrash />
                     </button>

@@ -27,9 +27,9 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
 
-  const toggleSidebar = () => setIsCollapsed(!isCollapsed);
+  // const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 
-  const toggleVisibility = () => setIsVisible(!isVisible);
+  // const toggleVisibility = () => setIsVisible(!isVisible);
 
   const menuItems = [
     { name: "Dashboard", path: "/", icon: <FaTachometerAlt /> },
@@ -55,17 +55,17 @@ const Sidebar = () => {
     <>
       {/* FAB Icon for Small Devices */}
       <button
-        className="fixed top-2 left-2 z-30 p-2 bg-primary text-black rounded-full md:hidden shadow-lg duration-500"
-        onClick={toggleVisibility}
+        className="fixed top-5 left-0 z-40 p-2 bg-primary text-black rounded-full md:hidden shadow-lg transition-transform duration-500"
+        onClick={() => setIsVisible(!isVisible)}
       >
         {isVisible ? <FaTimes /> : <FaBars />}
       </button>
 
       {/* Sidebar - Hidden on Small, Toggle-able on Medium */}
       <div
-        className={` h-full z-20 transition-all duration-300 shadow-lg bg-white text-gray-700
-            ${isVisible ? "left-0" : "-left-64"}   /* For Small Devices */
-            md:${isCollapsed ? "w-20" : "64"} md:left-0 
+        className={` h-full z-20 transition-transform duration-500 shadow-lg bg-white text-gray-700
+            ${isVisible ? "left-0" : "-left-64"}   
+            md:${isCollapsed ? "w-20" : "w-64"} md:left-0 
             lg:w-64 lg:left-0 }
         `}
       >
@@ -79,7 +79,7 @@ const Sidebar = () => {
           </h2>
           <button
             className=" hidden md:block lg:hidden text-xl p-2 text-gray-800 duration-500"
-            onClick={toggleSidebar}
+            onClick={() => setIsCollapsed(!isCollapsed)}
           >
             {isCollapsed ? <FaBars /> : <FaTimes />}
           </button>
@@ -87,7 +87,7 @@ const Sidebar = () => {
 
         {/* Navigation Links */}
 
-        <ul className="flex flex-col mt-4 pb-10 space-y-2 overflow-y-auto h-[calc(100vh-4rem)]">
+        <ul className="flex flex-col mt-4 pb-10 space-y-2 overflow-y-auto h-full">
           {menuItems.map((item, index) => (
             <li key={index}>
               <NavLink
@@ -99,14 +99,14 @@ const Sidebar = () => {
                 }
                 onClick={() => setIsVisible(false)}
               >
-                {/* <span
+                <span
                   className={`ml-4 ${
-                    isCollapsed ? "hidden" : "block"
+                    isCollapsed ? "hidden md:block" : "block"
                   } lg:block`}
                 >
                   {item.icon}
-                </span> */}
-                <span className="text-lg">{item.icon}</span>
+                </span>
+                {/* <span className="text-lg">{item.icon}</span> */}
                 <span
                   className={`ml-4 ${
                     isCollapsed ? "hidden" : "block"
@@ -121,11 +121,36 @@ const Sidebar = () => {
       </div>
 
       {/* Overlay for Small Devices */}
-      {isVisible && (
+      {/* {isVisible && (
         <div
           className="fixed inset-0 bg-gray-600 bg-opacity-50 z-30 md:hidden"
-          onClick={toggleVisibility}
+          onClick={() => setIsVisible(!isVisible)}
         ></div>
+      )} */}
+      {isVisible && (
+        <div
+          className="fixed  inset-y-0 left-0 w-56   bg-white z-30 md:hidden"
+          onClick={() => setIsVisible(!isVisible)}
+        >
+          <ul className="flex flex-col mt-4  py-10 space-y-2 overflow-y-auto h-full">
+            {menuItems.map((item, index) => (
+              <li key={index}>
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `flex items-center p-2 hover:bg-gray-300 cursor-pointer overflow-y-hidden space-x-3 ${
+                      isActive ? "bg-gray-200 text-black" : ""
+                    }`
+                  }
+                  onClick={() => setIsVisible(false)}
+                >
+                  <span className="text-lg">{item.icon}</span>
+                  <span>{item.name}</span>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </>
   );
