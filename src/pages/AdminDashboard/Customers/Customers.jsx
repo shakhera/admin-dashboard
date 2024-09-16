@@ -100,13 +100,6 @@ const Customers = () => {
                     </a>
                   </td>
                   <td className="py-2 px-4 border-b">
-                    {/* <button
-                      onClick={() => handleDelete(customer.id)}
-                      className="text-red-500 hover:text-red-700"
-                    >
-                      <FaTrash />
-                    </button> */}
-
                     <button
                       onClick={() => handleDelete(customer.id)}
                       className={`text-red-500 hover:text-red-700 ${

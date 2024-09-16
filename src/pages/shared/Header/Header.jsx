@@ -10,8 +10,6 @@ const Header = () => {
 
   return (
     <div className="bg-white flex justify-between items-center p-4 shadow-md ">
-      {/* <h2 className="ml-3 font-Poppins">i M a student</h2>
-      <h2 className="ml-3 ">i M a student</h2> */}
       {/* Search Bar */}
       <div className="w flex items-center space-x-2 ml-6">
         <input
